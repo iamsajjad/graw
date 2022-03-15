@@ -1,0 +1,23 @@
+name: graw
+version: "v0.1.0"
+author: Sajjad alDalwachee. <sajjad.aldalwachee@gmail.com>
+about: Clone raw file or subdirectory from Github repositories
+args:
+    - file:
+        short: f
+        long: file
+        value_name: URL
+        about: Clone single raw file
+        takes_value: true
+    - dir:
+        short: d
+        long: dir
+        value_name: URL
+        about: Clone subdirectory content
+        takes_value: true
+    - req:
+        short: r
+        long: requests
+        value_name: NUMBER
+        about: Number of concourent requests at atime
+        takes_value: true
