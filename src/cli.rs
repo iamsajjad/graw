@@ -1,8 +1,10 @@
 use clap::{App, Arg};
 
+use crate::version;
+
 pub fn matches() -> clap::ArgMatches {
     return App::new("graw")
-        .version("v0.1.0")
+        .version(version::version().as_str())
         .author("Sajjad alDalwachee. <sajjad.aldalwachee@gmail.com> ")
         .about("Clone raw file or subdirectory from Github repositories ")
         .arg(

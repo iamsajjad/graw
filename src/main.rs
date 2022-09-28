@@ -7,7 +7,8 @@ use regex::Regex;
 use reqwest::{self, header::ACCEPT, header::USER_AGENT};
 use serde::Deserialize;
 
-mod cli;
+pub mod cli;
+pub mod version;
 
 #[derive(Debug)]
 struct Target {
@@ -111,7 +112,7 @@ async fn get_raw_tree(target: Target) -> Result<Vec<String>, Box<dyn Error>> {
     let root: Root = client
         .get(tree_api)
         .header(ACCEPT, "application/vnd.github.v3+json")
-        .header(USER_AGENT, "graw v0.1.0")
+        .header(USER_AGENT, version::project())
         .send()
         .await?
         .json::<Root>()
@@ -126,7 +127,7 @@ async fn get_raw_tree(target: Target) -> Result<Vec<String>, Box<dyn Error>> {
     let treedata: Tree = client
         .get(treeslink)
         .header(ACCEPT, "application/vnd.github.v3+json")
-        .header(USER_AGENT, "graw v0.1.0")
+        .header(USER_AGENT, version::project())
         .send()
         .await?
         .json::<Tree>()
@@ -187,7 +188,7 @@ async fn download(url: &str, directory: String) -> Result<(), Box<dyn Error>> {
     let response: reqwest::Response = client
         .get(url)
         .header(ACCEPT, "application/vnd.github.v3+raw")
-        .header(USER_AGENT, "graw v0.1.0")
+        .header(USER_AGENT, version::project())
         .send()
         .await
         .expect("----******----");
