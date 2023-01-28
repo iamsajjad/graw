@@ -6,13 +6,15 @@ import shutil
 from dataclasses import dataclass
 import requests
 
+from .version import Version
+
 RAW_FORMAT = "https://gitlab.com/api/v4/projects/{}%2F{}/repository/files/{}/raw?ref={}"
 API_FORMAT = "https://gitlab.com/api/v4/projects/{}%2F{}/repository/tree/?path={}&ref={}&per_page=9999"
 GITLAB_URL_PARTS = r"^(https://gitlab.com)/([a-zA-Z0-9-_/]*)/-/(blob|tree)/([a-zA-Z0-9-_]*)/([a-zA-Z0-9-_./]*)$"
 
 # authorization = f'token {token}'
 headers = {
-    "user-agent": "graw-0.1.0",
+    "user-agent": f"graw-{Version.STRING}",
     # "Authorization" : authorization,
 }
 

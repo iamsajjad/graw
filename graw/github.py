@@ -5,11 +5,13 @@ import shutil
 from dataclasses import dataclass
 import requests
 
+from .version import Version
+
 API_FORMAT = "https://api.github.com/repos/{}/{}/contents/{}?ref={}"
 
 # authorization = f'token {token}'
 headers = {
-    "user-agent": "graw-0.1.0",
+    "user-agent": f"graw-{Version.STRING}",
     "Accept": "application/vnd.github.v3+json",
     # "Authorization" : authorization,
 }
